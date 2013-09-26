@@ -1,0 +1,7 @@
+[
+# Allows insertion of rails html tags with ctrl+shift+.
+# Requires ERB insert and toggle commands package
+{ "keys": ["ctrl+shift+."], "command": "erb" }
+]
+
+
