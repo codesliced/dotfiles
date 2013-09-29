@@ -23,6 +23,8 @@ export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 # Unfuck Support
 export PATH="$PATH:$HOME/.uf/bin"
+# Unfuck autocomplete
+complete -W "save background chibash sfbash desktop git irb fancy-irb init allsf allchi" uf
 
 # A more colorful prompt
 # \[\e[0m\] resets the color to default color
