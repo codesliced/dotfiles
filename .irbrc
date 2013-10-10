@@ -1,7 +1,10 @@
 # auto-complete for method names and such
 require 'irb/completion'
 
-# loads awesome_print
+# loads awesome_print a gem for coloring and
+# formatting output in irb
+# adding awesome_print to your gemfile will ensure
+# functionality on projects with gemfiles
 require "awesome_print"
 AwesomePrint.irb!
 
