@@ -16,6 +16,8 @@
 # Icon holds icon data.
 Icon
 
+# *.db are local databases.  Make your own, don't share
+*.db
 
 # All ._ files in OSX should be icons
 ._*
