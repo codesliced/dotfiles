@@ -16,7 +16,7 @@
 
 
 # These are custom color options for the console
-# Check out [inset url here]
+# basic CLI colors should work here
 [color]
   status = auto
   diff = auto
