@@ -1,12 +1,29 @@
+# Any files matching the search terms in this file will be ignored by git
+
+# .DS_Store holds information about the current folder for OSX
+# ie: icon placement
 .DS_Store
+
+# .swp holds swap files used by command line editors such as vim
+.swp
+
+# .AppleDouble holds finder information in OSX
 .AppleDouble
+
+#.LSOverride local path override in OSX (commonly used by 1password)
 .LSOverride
+
+# Icon holds icon data.
 Icon
 
 
-# Thumbnails
+# All ._ files in OSX should be icons
 ._*
 
-# Files that might appear on external disk
+# The following are files that might appear on external disk in OSX
+
+# .Spotlight-V100 holds information about the location of files for spotlight
 .Spotlight-V100
+
+# .Trashes holds your trash before you empty it for external drives
 .Trashes
