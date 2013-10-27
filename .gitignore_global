@@ -13,8 +13,8 @@
 # *.sqlite3 are local databases.  Make your own, don't share
 *.sqlite3
 
-# .Spotlight-V100 holds information about the location of files for spotlight
+# .Spotlight-V100 holds spotlight index files
 .Spotlight-V100
 
-# .Trashes holds your trash before you empty it for external drives
+# .Trashes holds disk specific trash folders
 .Trashes
