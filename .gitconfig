@@ -1,10 +1,6 @@
 [core]
-  # Default text editor is set in the .bash_profile but can be overridden here
-  editor = subl -w
-
   # Excludesfiles allows us to set a global list of things to ignore
   excludesfile = ~/.gitignore_global
-
 
 # These are custom color options for the console
 [color]
@@ -23,7 +19,7 @@
   # lg is now a shortcut for a pretty log with short commit messages
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 
-  # cm is now a shortcut for showing the diff in sublime for commit messages
+  # ci is now a shortcut for showing the diff in sublime for commit messages
   ci = commit --verbose
 
 [push]

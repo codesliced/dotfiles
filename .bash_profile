@@ -79,6 +79,9 @@ alias ls='ls -Gh'
 # Useful aliases
 alias e=subl
 
+# Set Sublime as the Default editor
+export EDITOR="subl --wait"
+
 # If the subl command doesn't work. It is probably not properly symlinked
 # Try this command for sublime 2
 # ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
