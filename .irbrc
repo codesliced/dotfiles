@@ -1,31 +1,18 @@
-# non-wirble auto-complete
+# Auto-complete for method names and such
 require 'irb/completion'
-# Awesome Print colorizes output like strings and arrays
-require "awesome_print"
-# Pretty print is a standard of ruby 2+ for formatting
-require 'pp'
-# Wirble formats output
-require 'wirble'
 
-begin
-  # init wirble
-  Wirble.init
-  Wirble.colorize
-  rescue LoadError => err
-  $stderr.puts "Couldn't load Wirble: #{err}"
-end
+# Awesomeprint replaces irb's default pretty printingwith fancier formatting
+require "awesome_print"
+AwesomePrint.irb!
+
+# Loads simple IRB (without RVM notice)
+IRB.conf[:PROMPT_MODE] = :SIMPLE
 
 
 IRB.conf[:AUTO_INDENT] = true
 IRB.conf[:USE_READLINE] = true
 
-# loads simple IRB (without RVM notice) Simple Prompt has no line numbers
-IRB.conf[:PROMPT_MODE] = :SIMPLE
-
-# loads awesome_print
-AwesomePrint.irb!
-
-# A clear command like in unix
+# A method for clearing the screen
 def clear
   system('clear')
 end
