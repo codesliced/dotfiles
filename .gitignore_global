@@ -7,9 +7,6 @@
 # Backup files created by the vim text editor
 .swp
 
-#.LSOverride local path override in OSX (commonly used by 1password)
-.LSOverride
-
 # *.sqlite3 are local databases.  Make your own, don't share
 *.sqlite3
 
