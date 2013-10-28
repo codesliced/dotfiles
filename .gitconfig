@@ -12,13 +12,18 @@
   changed = green
   added = yellow
 
-# Hate typing long commands? Aliases will let you set custom shortcuts
-
+# Aliases are command shortcuts
 [alias]
   co = checkout
 
   # lg is now a shortcut for a pretty log with short commit messages
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  # See the log manpage: https://www.kernel.org/pub/software/scm/git/docs/git-log.html
+  # for explanations of what these options do
+  lg = log \
+    --graph \
+    --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
+    --abbrev-commit \
+    --date=relative
 
   # Shorthand for commit, also enforces diff display in editor before commit
   ci = commit --verbose
