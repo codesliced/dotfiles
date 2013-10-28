@@ -28,6 +28,16 @@
   # Shorthand for commit, also enforces diff display in editor before commit
   ci = commit --verbose
 
+  # Shorthand for a less noisy status
+  s = commit --dry-run --short
+
+  # More sensible names for adding and removing files from the readme
+  stage = add
+  unstage = reset HEAD
+
+  # Edit the last commit
+  amend= commit --verbose --amend
+
 [push]
   # This tells git we have to specify where we want our push to go
   # for other options check out http://blogs.collab.net/cloudforge/tips-on-git-de-fanging-git-push
