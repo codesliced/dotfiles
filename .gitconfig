@@ -37,8 +37,3 @@
 
   # Edit the last commit
   amend= commit --verbose --amend
-
-[push]
-  # This tells git we have to specify where we want our push to go
-  # for other options check out http://blogs.collab.net/cloudforge/tips-on-git-de-fanging-git-push
-  default = simple
