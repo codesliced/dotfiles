@@ -1,74 +1,35 @@
-# echo is like puts for bash (bash is the program running in your terminal)
-echo "Loading ~/.bash_profile a shell script that runs in every new terminal you open"
-# $VARIABLE will render before the rest of the command is executed
-echo "Logged in as $USER at $(hostname)"
+# Set sublime as the default editor
+which -s subl && export EDITOR="subl --wait"
 
-# RVM scripts below
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-# Path for RVM
-PATH=$PATH:$HOME/.rvm/bin
-# note that when setting PATH=$PATH is called.  This is like A=A+B so we preserve the old path
+# ---
 
-# git completion (commented out in case you don't have these)
-# source ~/.git-completion.bash
-# source ~/.git-prompt.sh
+# Git config - depends on version 1.8.3.4 (installed with homebrew)
 
-# Path order matters, putting /usr/local/bin: before $PATH
-# ensures brew programs will be seen and used before another program of the same name
+# Load git prompt
+git_prompt_script=/usr/local/etc/bash_completion.d/git-prompt.sh
+test -s $git_prompt_script && source $git_prompt_script
 
-# Path for brew
-export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
-# Path for Heroku
-export PATH="/usr/local/heroku/bin:$PATH"
-# Unfuck Support
-export PATH="$PATH:$HOME/.uf/bin"
-# Unfuck autocomplete
-complete -W "save background chibash sfbash desktop git irb fancy-irb init allsf allchi" uf
+# Load git completions
+git_completion_script=/usr/local/etc/bash_completion.d/git-completion.bash
+test -s $git_completion_script && source $git_completion_script
 
-# A more colorful prompt
-# \[\e[0m\] resets the color to default color
-c_reset='\[\e[0m\]'
-#  \e[0;31m\ sets the color to red
-c_path='\[\e[0;31m\]'
-# \e[0;32m\ sets the color to green
-c_git_clean='\[\e[0;32m\]'
-# \e[0;31m\ sets the color to red
-c_git_dirty='\[\e[0;31m\]'
+# ---
 
-# PS1 is the variable for the prompt you see everytime you hit enter
-PROMPT_COMMAND='PS1="${c_path}\W${c_reset}$(git_prompt) :> "'
+# A fancyish prompt
 
-export PS1='\n\[\033[0;31m\]\W\[\033[0m\]$(git_prompt)\[\033[0m\]:> '
+# \W            - current directory name (not full path)
+# \e[01;33      - yellow
+# $(__git_ps1)  - git "prompt" defined in $git_prompt_script loaded above
+# \e[01;32m     - money green
+# \$            - literal dolla sign
+# \e[0m         - reset to default color
 
-# determines if the git branch you are on is clean or dirty
-git_prompt ()
-{
-  if ! git rev-parse --git-dir > /dev/null 2>&1; then
-    return 0
-  fi
-  git_branch=$(Git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
-  if git diff --quiet 2>/dev/null >&2; then
-    git_color="${c_git_clean}"
-  else
-    git_color=${c_git_dirty}
-  fi
-  echo " [$git_color$git_branch${c_reset}]"
-}
+test -s $git_prompt_script &&
+  export PS1='\W\e[01;33m$(__git_ps1) \e[01;32m\$\e[0m '
 
-# Add postgres to autostart with this line from console
-# ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+# ---
 
-# Manually start postgres
-function pgstart {
-  pg_ctl -D /usr/local/var/postgres -l logfile start
-}
-
-# Manually stop postgres
-function pgstop {
-  pg_ctl -D /usr/local/var/postgres stop
-}
-
+# ls config
 
 # Colors ls should use for folders, files, symlinks etc, see `man ls` and
 # search for LSCOLORS
@@ -76,12 +37,34 @@ export LSCOLORS=ExGxFxdxCxDxDxaccxaeex
 # Force ls to use colors (G) and use humanized file sizes (h)
 alias ls='ls -Gh'
 
+# ---
+
 # Useful aliases
-alias e=subl
 
-# Set Sublime as the Default editor
-export EDITOR="subl --wait"
+# e for editor
+which -s subl && alias e=subl
 
-# If the subl command doesn't work. It is probably not properly symlinked
-# Try this command for sublime 2
-# ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+# ---
+
+# The `PATH="/some-path-to-folder-of-executables:$PATH"` pattern *prepends*
+# a the path to the list of places to look for executables - meaning that
+# folder will be searched first.
+#
+# For example /usr/local/bin needs to come before /usr/bin if we want to
+# use the postgres commands installed with homebrew instead of the
+# operating systems default postgres version.
+
+# Add homebrew executables folder to PATH
+test -d /usr/local/bin && export PATH="/usr/local/bin:$PATH"
+
+# Add unfuck executables
+test -d $HOME/.uf/bin && export PATH="$HOME/.uf/bin:$PATH"
+
+# Add heroku executables
+test -d /usr/local/heroku/bin && export PATH="/usr/local/heroku/bin:$PATH"
+
+# ---
+
+# If RVM is installed, run it's init script
+rvm_init_script="$HOME/.rvm/scripts/rvm"
+test -s $rvm_init_script && source $rvm_init_script
