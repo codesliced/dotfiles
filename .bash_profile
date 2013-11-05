@@ -25,7 +25,7 @@ test -s $git_completion_script && source $git_completion_script
 # \e[0m         - reset to default color
 
 test -s $git_prompt_script &&
-  export PS1='\W\e[01;33m$(__git_ps1) \e[01;32m\$\e[0m '
+  export PS1='\W\[\e[01;33m\]$(__git_ps1) \[\e[01;32m\]\$\[\e[0m\] '
 
 # ---
 
