@@ -9,3 +9,9 @@ These files hold the configuration for:
 * Sublime - `Preferences.sublime-setting-user`, `sublime_key_bindings`
 
 Students: these files are also safe to use on your laptops
+
+---
+
+See also:
+
+* [Myles's Sublime Text 2 config](https://github.com/quackingduck/sublime-conf)
